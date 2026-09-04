@@ -23,3 +23,22 @@ function burst(n){for(let i=0;i<n;i++)setTimeout(()=>{const h=document.createEle
 document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
 document.querySelector('.light-copy')?.insertAdjacentHTML('beforeend','<div class="fun-note">Görev dağılımı: Sen gülümse, ben sebep bulurum. Kötü şaka departmanı da şimdilik bende.</div>');
 document.querySelector('.rebellion-copy')?.insertAdjacentHTML('beforeend','<div class="fun-note">Özlemek edebiyatta güzel. Gerçek hayatta gereksiz masraf.</div>');
+
+// Oyun 1: Ezgi'nin gülüşü için kaçan kalpleri yakala
+const lightScene=document.querySelector('.light'),lightCopy=document.querySelector('.light-copy'),lightNext=lightScene?.querySelector('.story-next');
+if(lightCopy&&lightNext){
+  lightCopy.insertAdjacentHTML('beforeend','<div class="mini-game" id="heartGame"><div class="game-title"><b>Kalbimi yakala</b><span>0 / 5</span></div><div class="heart-arena"><button class="game-heart" aria-label="Kalbi yakala">♥</button></div><p class="game-status">Biraz hızlı olabilir; seni görünce heyecanlanıyor.</p></div>');
+  lightNext.disabled=true;lightNext.querySelector('span').textContent='Önce kalbimi yakala';
+  const game=document.getElementById('heartGame'),heart=game.querySelector('.game-heart'),counter=game.querySelector('.game-title span'),status=game.querySelector('.game-status');let caught=0;
+  const moveHeart=()=>{heart.style.setProperty('--x',Math.floor(Math.random()*78)+3);heart.style.setProperty('--y',Math.floor(Math.random()*55)+7)};
+  moveHeart();heart.addEventListener('click',()=>{caught++;counter.textContent=caught+' / 5';burst(4);if(caught<5){status.textContent=caught===3?'Az kaldı… Kalbim zaten sende sayılır.':'Yakaladın! Bir tane daha ♡';moveHeart()}else{heart.remove();status.textContent='Tamam, itiraf: Zaten hep sendeydi. ♡';lightNext.disabled=false;lightNext.querySelector('span').textContent='Kalbi teslim aldım'}});
+}
+
+// Oyun 2: Birlikte taşımak için yükleri hafiflet
+const letterScene=document.querySelector('.letter'),letterBody=document.querySelector('.letter-body'),letterNext=letterScene?.querySelector('.story-next');
+if(letterBody&&letterNext){
+  letterBody.insertAdjacentHTML('beforeend','<div class="mini-game light-game" id="burdenGame"><div class="game-title"><b>Bugünün yüklerini hafiflet</b><span>dokun ve bırak</span></div><div class="burdens"><button class="burden">Yorgunluk</button><button class="burden">Kaygılar</button><button class="burden">Kırgınlıklar</button><button class="burden">“İyiyim” deme mecburiyeti</button></div><p class="relief">Bunların hepsini tek başına taşımak zorunda değilsin.</p></div>');
+  letterNext.disabled=true;letterNext.querySelector('span').textContent='Yükleri beraber hafifletelim';
+  const burdens=[...document.querySelectorAll('.burden')],relief=document.querySelector('.relief');let released=0;
+  burdens.forEach(item=>item.addEventListener('click',()=>{if(item.classList.contains('gone'))return;item.classList.add('gone');released++;if(released===burdens.length){relief.classList.add('show');letterNext.disabled=false;letterNext.querySelector('span').textContent='Birlikte devam edelim';burst(10)}}));
+}

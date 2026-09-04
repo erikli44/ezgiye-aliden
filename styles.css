@@ -3,6 +3,29 @@
 @media(max-width:480px){body{overflow-wrap:anywhere}.progress{left:0;top:0;right:0;width:100%;height:3px;transform:none;border:0;background:#ffffff12}.progress i{height:3px!important;width:0}.progress span{display:none}.gate-copy{width:calc(100% - 32px);padding-bottom:max(7vh,env(safe-area-inset-bottom))}.gate h1{font-size:clamp(3.25rem,16vw,4.7rem);line-height:.9;margin:18px 0}.gate p{font-size:.98rem;line-height:1.55}.gate button{width:100%;min-height:54px;margin-top:16px}.music{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:46px;height:46px;padding:0;justify-content:center;border-radius:50%}.opening-copy{width:calc(100% - 32px);margin-bottom:14vh}.opening h2{font-size:clamp(2.9rem,14.5vw,4.3rem);line-height:.94}.opening p{font-size:1rem;line-height:1.62}.scroll-cue{display:none}.big-copy{font-size:clamp(2.35rem,11vw,3.45rem)}.side-note{margin-left:7vw}.frame,.frame.tall{flex-basis:88vw}.frame img,.frame.tall img{height:58svh;min-height:390px}.film-track{scrollbar-width:none}.film-track::-webkit-scrollbar{display:none}.letter-body{font-size:1.22rem;line-height:1.58}.letter-body p:first-child{font-size:1.7em}.light-photo{height:60svh;min-height:60svh}.light-copy h2,.video-heading h2,.promise-intro h2,.confession-card h2{font-size:clamp(2.9rem,14vw,4.2rem)}.video-scene{padding-left:16px;padding-right:16px}.video-heading{padding:0 8px}.phone-film{width:min(88vw,360px);padding:6px}.video-play{min-height:54px}.video-play i{width:62px;height:62px}.rebellion-copy{width:calc(100% - 32px)}.rebellion-copy p{font-size:1rem;line-height:1.68}.rebellion-copy strong{margin-top:34px;font-size:1.5rem}.mosaic{grid-template-rows:auto 42svh 36svh 38svh auto}.promises{padding-left:18px;padding-right:18px}.promises li{grid-template-columns:42px 1fr;padding:24px 0}.promises li p{font-size:1.3rem}.confession-photo{height:62svh;min-height:62svh}.confession-card button{width:100%;min-height:52px}.ending{min-height:90svh;padding-bottom:max(60px,env(safe-area-inset-bottom))}.ending small{line-height:1.6}.reveal{transform:translateY(28px)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
+/* Modern dokunma alanları */
+.story-next,.gate button,.confession-card button,.video-play{border-radius:999px!important;border:1px solid #ffffff4a!important;background:linear-gradient(135deg,#fffaf2,#eeb3bb)!important;color:#211417!important;box-shadow:0 12px 35px #0004,0 1px 0 #fff inset;overflow:hidden;position:relative;letter-spacing:.01em}
+.story-next:before,.gate button:before,.confession-card button:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#fff8 50%,transparent 65%);transform:translateX(-120%);transition:transform .65s}
+.story-next:hover:before,.gate button:hover:before,.confession-card button:hover:before{transform:translateX(120%)}
+.story-next b,.gate button b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#211417;color:#fff;transition:transform .25s}
+.story-next:hover b,.gate button:hover b{transform:translateX(3px)}
+.story-next:active,.gate button:active,.confession-card button:active{transform:translateX(-50%) scale(.97)}
+.gate button:active,.confession-card button:active{transform:scale(.97)}
+.story-next:focus-visible,.gate button:focus-visible,.confession-card button:focus-visible,.game-heart:focus-visible,.burden:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.story-next:disabled{filter:grayscale(.55);opacity:.48}
+.paper-next{background:linear-gradient(135deg,#25171b,#55303a)!important;color:#fff!important}
+
+/* Küçük oyunlar */
+.mini-game{margin:26px auto 8px;width:min(560px,100%);border:1px solid #ffffff30;background:#ffffff0d;border-radius:24px;padding:18px;box-shadow:0 18px 50px #0003;backdrop-filter:blur(14px)}
+.mini-game.light-game{border-color:#8c4b5538;background:#fff8;color:#291a1e}
+.game-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;font:600 13px Calibri,sans-serif}
+.game-title span{font-size:11px;letter-spacing:.12em;opacity:.65}.heart-arena{position:relative;height:135px;border-radius:17px;overflow:hidden;background:radial-gradient(circle at 50% 120%,#e9839380,transparent 60%),#160f12}
+.game-heart{position:absolute;left:calc(var(--x)*1%);top:calc(var(--y)*1%);width:50px;height:50px;border:0;border-radius:50%;background:linear-gradient(145deg,#ff889a,#b72e48);color:#fff;font-size:23px;box-shadow:0 8px 25px #be53658c;cursor:pointer;animation:heartPulse 1.1s infinite alternate;transition:left .25s,top .25s,transform .15s}
+.game-heart:active{transform:scale(.82)}.game-status{text-align:center;margin:10px 0 0;font-size:13px;opacity:.8}
+.burdens{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}.burden{border:1px solid #8e39484a;border-radius:999px;background:#fff;color:#573039;min-height:43px;padding:0 15px;font:600 13px Calibri,sans-serif;cursor:pointer;transition:.4s}.burden.gone{opacity:0;transform:translateY(-20px) scale(.75);pointer-events:none}.relief{font-family:"Times New Roman",serif;font-size:1.25rem;text-align:center;color:#9d4050;max-height:0;opacity:0;transition:.5s;margin:0}.relief.show{max-height:80px;opacity:1;margin:14px 0 0}
+@keyframes heartPulse{to{transform:scale(1.09);box-shadow:0 12px 34px #e66a8099}}
+@media(max-width:760px){.mini-game{border-radius:20px;padding:13px}.heart-arena{height:122px}.game-heart{width:48px;height:48px}.burden{min-height:44px}.story-next,.gate button{font-size:14px}}
+
 /* Bölüm bölüm ilerleyen yeni hikâye düzeni */
 body{font-family:Calibri,"Segoe UI",Arial,sans-serif;overflow:hidden}
 h1,h2,.big-copy,.letter-body,.frame figcaption,.rebellion-copy strong,.mosaic-note,.promises li p,.secret strong,.ending p{font-family:"Times New Roman",Times,serif!important}
