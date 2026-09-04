@@ -3,63 +3,138 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0d0912">
-  <title>Ezgi'ye — Ali'den</title>
-  <meta name="description" content="Ali'den Ezgi'ye, birlikte çekilmiş anılarla hazırlanmış küçük bir sürpriz.">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
-    :root{--bg:#0d0912;--ink:#fff8ef;--rose:#ff648d;--pink:#ffc0cf;--gold:#f2c978;--muted:#cbbdca;--line:#ffffff18}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}button,a{font:inherit}
-    body:before{content:"";position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
-    .cover{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;background:linear-gradient(#08050a44,#08050add),url('assets/ani-4.webp') center/cover;transition:opacity .9s,visibility .9s}.cover.hide{opacity:0;visibility:hidden}.cover:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,transparent 0,#09060bbd 72%)}.cover-inner{position:relative;z-index:1;width:min(620px,calc(100% - 36px));animation:rise 1s ease both}.tinycap{color:var(--gold);letter-spacing:.19em;font-size:.75rem;font-weight:700;text-transform:uppercase}.cover h1{font:italic 600 clamp(3.7rem,14vw,8rem)/.86 'Playfair Display';margin:24px 0 22px}.cover p{font-size:1.05rem;line-height:1.65;color:#eadfe8;max-width:480px;margin:0 auto 28px}.enter{border:1px solid #ffffff55;border-radius:99px;background:#fff;color:#211421;padding:15px 24px;font-weight:700;cursor:pointer;box-shadow:0 12px 42px #0009;transition:.25s}.enter:hover{transform:translateY(-3px);box-shadow:0 15px 50px #ff648d55}.sound-note{display:block;color:#c9b7c7;font-size:.78rem;margin-top:14px}
-    .music{position:fixed;right:18px;bottom:18px;z-index:30;border:1px solid #ffffff2b;background:#1c1324dd;color:#fff;border-radius:99px;padding:10px 14px;display:flex;align-items:center;gap:9px;box-shadow:0 10px 40px #0008;backdrop-filter:blur(12px);cursor:pointer;opacity:0;transform:translateY(15px);transition:.4s}.music.show{opacity:1;transform:none}.bars{height:14px;display:flex;gap:2px;align-items:end}.bars i{width:2px;height:50%;background:var(--pink);animation:wave .8s infinite alternate}.bars i:nth-child(2){animation-delay:.2s}.bars i:nth-child(3){animation-delay:.4s}.music.paused .bars i{animation:none;height:2px}@keyframes wave{to{height:100%}}
-    .hero{min-height:100svh;position:relative;display:flex;align-items:end;overflow:hidden}.hero-photo{position:absolute;inset:0;background:url('assets/ani-1.webp') 58% center/cover;transform:scale(1.05);animation:slowzoom 16s ease-out both}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0d091222 10%,#0d091244 44%,#0d0912 100%)}.hero-copy{position:relative;z-index:1;width:min(850px,calc(100% - 36px));margin:0 auto;padding:0 0 11vh}.hero h1{font:600 clamp(3.1rem,9vw,7rem)/.93 'Playfair Display';margin:16px 0}.hero h1 em{color:var(--pink)}.hero p{font-size:clamp(1.05rem,2.5vw,1.3rem);line-height:1.7;max-width:610px;color:#ebdfe8}.down{display:inline-flex;margin-top:18px;color:var(--pink);text-decoration:none;font-weight:700}
-    main{overflow:hidden}.wrap{width:min(850px,calc(100% - 36px));margin:auto}.chapter{padding:110px 0;border-top:1px solid var(--line)}.num{color:var(--rose);font-weight:700;font-size:.8rem;letter-spacing:.15em}.chapter h2{font:600 clamp(2.3rem,7vw,4.5rem)/1.04 'Playfair Display';margin:17px 0 28px}.chapter p{font-size:1.1rem;line-height:1.85;color:#e1d5df;margin:0 0 18px}.chapter strong{color:#fff}.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:none}
-    .memory-wide{width:min(1100px,calc(100% - 24px));margin:0 auto 30px;position:relative;border-radius:34px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 40px 100px #000b}.memory-wide img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}.memory-wide:hover img{transform:scale(1.035)}.memory-wide:after{content:"Bizim en güzel filtremiz: yan yana olmak.";position:absolute;left:18px;right:18px;bottom:18px;background:#100a14b8;border:1px solid #ffffff22;border-radius:18px;padding:14px 18px;backdrop-filter:blur(13px);font-size:.92rem}
-    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}.portrait{position:relative;aspect-ratio:3/4;border-radius:30px;overflow:hidden;box-shadow:0 30px 80px #0009;transform:rotate(-2deg)}.portrait img{width:100%;height:100%;object-fit:cover}.portrait:after{content:"Yakın çekim: %50 biz, %50 kırmızı ışık, %100 güzel anı";position:absolute;left:14px;right:14px;bottom:14px;padding:13px;border-radius:15px;background:#120b17c9;font-size:.78rem;line-height:1.45;backdrop-filter:blur(10px)}
-    .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}.note{padding:22px;border:1px solid #ffffff16;background:linear-gradient(145deg,#211529,#15101b);border-radius:22px;min-height:165px;transition:.25s}.note:hover{transform:translateY(-5px) rotate(-1deg)}.note b{display:block;color:var(--pink);margin-bottom:10px}.note p{font-size:.96rem;line-height:1.55;margin:0}
-    .photo-break{height:85svh;min-height:560px;position:relative;background:url('assets/ani-3.webp') 54% center/cover fixed;display:grid;place-items:end center}.photo-break:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0d091266,#0d091200 40%,#0d0912e6)}.photo-quote{position:relative;z-index:1;width:min(760px,calc(100% - 36px));padding-bottom:70px;text-align:center;font:italic 600 clamp(2rem,6vw,4.5rem)/1.1 'Playfair Display'}
-    .promise{background:linear-gradient(145deg,#30172a,#17101e);border:1px solid #ffc0cf27;border-radius:34px;padding:clamp(26px,7vw,55px);box-shadow:0 32px 100px #0007}.promise ul{list-style:none;padding:0;margin:25px 0 0}.promise li{padding:16px 0;border-top:1px solid #ffffff13;color:#eadfea;line-height:1.58}.promise li:before{content:"♡";color:var(--rose);margin-right:12px}
-    .storyline{position:relative;padding-left:38px;margin-top:45px}.storyline:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--rose),var(--gold),transparent)}.moment{position:relative;padding:0 0 46px}.moment:last-child{padding-bottom:0}.moment:before{content:"";position:absolute;left:-36px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--rose);box-shadow:0 0 0 7px #ff648d12}.moment small{color:var(--gold);letter-spacing:.12em;font-weight:700}.moment h3{font:600 clamp(1.5rem,4vw,2.15rem)/1.2 'Playfair Display';margin:8px 0 10px}.moment p{font-size:1rem;margin:0;color:var(--muted)}
-    .aside{padding:120px 18px;background:radial-gradient(circle at 50% 50%,#5a172f 0,#1b0d18 45%,#0d0912 75%);text-align:center;position:relative}.aside-inner{width:min(760px,100%);margin:auto}.aside h2{font:italic 600 clamp(2.8rem,9vw,6rem)/1 'Playfair Display';margin:18px 0 28px}.aside p{font-size:clamp(1.05rem,2.4vw,1.25rem);line-height:1.8;color:#f0dfe7}.aside .soft{color:var(--pink);font-weight:700}
-    .confession{text-align:center;padding-bottom:115px}.confession-box{width:min(700px,calc(100% - 36px));margin:auto;padding:clamp(28px,7vw,56px);border:1px solid #ffffff1f;border-radius:34px;background:linear-gradient(145deg,#211525,#120d18);box-shadow:0 35px 100px #0008}.confession h2{font:italic 600 clamp(2.5rem,8vw,5rem)/1 'Playfair Display';margin:10px 0 25px}.confession p{font-size:1.08rem;line-height:1.8;color:#ddcfdb}.confess-btn{margin-top:15px;border:1px solid #ffc0cf66;background:#ff648d12;color:#fff;border-radius:99px;padding:14px 20px;font-weight:700;cursor:pointer}.secret{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s,margin .8s}.secret>div{overflow:hidden}.secret.open{grid-template-rows:1fr;margin-top:28px}.secret p{color:#fff}.tear{position:fixed;z-index:120;top:-40px;width:10px;height:17px;border-radius:70% 30% 60% 40%;background:linear-gradient(145deg,#fff,#8ddcff88);box-shadow:0 0 12px #9be4ff;pointer-events:none;animation:tearfall var(--d) linear forwards}@keyframes tearfall{to{transform:translateY(110vh) rotate(150deg);opacity:.1}}
-    .final-photo{width:min(980px,calc(100% - 24px));margin:0 auto;position:relative;border-radius:36px;overflow:hidden;aspect-ratio:16/9}.final-photo img{width:100%;height:100%;object-fit:cover}.final-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,#0d0912f2)}.final-text{text-align:center;position:relative;margin:-150px auto 0;z-index:2;width:min(650px,calc(100% - 36px));padding-bottom:110px}.final-text h2{font:italic 600 clamp(3.2rem,10vw,6.5rem)/.95 'Playfair Display';margin:0;color:var(--pink)}.final-text p{font-size:1.08rem;line-height:1.8;color:#dacdda}.signature{font:italic 600 1.6rem 'Playfair Display';color:#fff;margin-top:25px}.legal{font-size:.8rem!important;color:#99899a!important;margin-top:38px!important}
-    .heart{position:fixed;pointer-events:none;z-index:110;color:var(--rose);animation:fly 1.8s ease-out forwards}@keyframes fly{to{transform:translate(var(--x),-180px) rotate(40deg);opacity:0}}@keyframes slowzoom{to{transform:scale(1.13)}}@keyframes rise{from{opacity:0;transform:translateY(22px)}}
-    @media(max-width:700px){.chapter{padding:78px 0}.split{grid-template-columns:1fr;gap:34px}.portrait{width:88%;margin:auto}.notes{grid-template-columns:1fr}.note{min-height:auto}.photo-break{background-attachment:scroll}.memory-wide{aspect-ratio:4/5}.memory-wide img{object-position:56% center}.final-photo{aspect-ratio:4/5}.final-photo img{object-position:60% center}.final-text{margin-top:-125px}.music span:last-child{display:none}.aside{padding:90px 18px}.storyline{padding-left:32px}.moment:before{left:-30px}.confession{padding-bottom:80px}}
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-  </style>
+  <meta name="theme-color" content="#0a0909">
+  <title>Ezgi — Ali'nin Gözünden</title>
+  <meta name="description" content="Ali'nin Ezgi'ye anlatmak istediği, fotoğraflardan ve anılardan oluşan küçük bir hikâye.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="cover" id="cover"><div class="cover-inner"><div class="tinycap">Ali'den • Sadece Ezgi'ye</div><h1>Kulaklığını tak.</h1><p>Çünkü bazı şeyler okunmaz; hissedilir. Bu da sana hazırladığım küçük bir “iyi ki varsın” hikâyesi.</p><button class="enter" id="enter">Hikâyemizi başlat ♡</button><span class="sound-note">Müzik bu dokunuşla başlayacak</span></div></div>
-  <button class="music paused" id="music" aria-label="Müziği durdur veya oynat"><span class="bars"><i></i><i></i><i></i></span><span id="musicText">Kenan Doğulu • Yosun</span></button><div id="yt" hidden></div>
+  <div class="gate" id="gate">
+    <img src="assets/ani-6.webp" alt="" aria-hidden="true">
+    <div class="gate-shade"></div>
+    <div class="gate-copy">
+      <span>ALİ'DEN • EZGİ'YE</span>
+      <h1>Bunu yalnızca<br><em>senin için</em> yaptım.</h1>
+      <p>Kulaklığını tak. Birkaç dakikalığına dünyayı dışarıda bırakalım.</p>
+      <button id="begin">Hikâyeyi başlat <b>→</b></button>
+      <small>Ses bu dokunuşla açılır</small>
+    </div>
+  </div>
+
+  <aside class="progress" aria-hidden="true"><i id="progressBar"></i><span id="chapterNo">01</span></aside>
+  <button class="music paused" id="music" aria-label="Müziği oynat veya durdur"><span class="eq"><i></i><i></i><i></i></span><span>Yosun</span></button>
+  <div id="yt" hidden></div>
+
   <main>
-    <header class="hero"><div class="hero-photo" aria-hidden="true"></div><div class="hero-copy"><div class="tinycap">Bizden bir kareyle başlayan</div><h1>Sana söylemek istediğim <em>birkaç şey</em> var.</h1><p>Bu sayfa ne bir özür dilekçesi ne de uzun bir toplantı. Toplantı olsaydı ikimiz de muhtemelen katılmazdık.</p><a href="#gordum" class="down">Biraz aşağı gel ↓</a></div></header>
-    <section class="chapter wrap reveal" id="gordum"><span class="num">01 — SENİ GÖRÜYORUM</span><h2>Sadece gülüşünü değil,<br>taşıdıklarını da.</h2><p>Hayatın bazen senden olması gerekenden fazlasını istediğini biliyorum. Her şeyi anlatmadığın günleri, güçlü görünürken aslında yorulduğun anları ve kimseye belli etmeden içinde çözdüğün şeyleri de hissediyorum.</p><p>Ben bütün cevapları bilen biri değilim. Ama <strong>seni dinlemekten, anlamaya çalışmaktan ve yanında kalmaktan vazgeçmeyen</strong> biri olmak istiyorum.</p></section>
-    <figure class="memory-wide reveal"><img src="assets/ani-1.webp" alt="Ali ve Ezgi birlikte gülümsüyor" loading="lazy"></figure>
-    <section class="chapter wrap reveal"><span class="num">02 — BİZİM HİKÂYEMİZ</span><h2>Bazı insanlar hayata girmez.<br>Hayatın anlamını değiştirir.</h2><p>Seninle başlayan şey tek bir güne, tek bir fotoğrafa ya da tek bir güzel cümleye sığmıyor. Önce varlığın tanıdık geldi. Sonra sesin, gülüşün, bazen kızışın… Hepsi günlerimin içinde kendine sessizce bir yer açtı.</p><p>Bir noktadan sonra sana anlatmak istediğim şeyler birikmeye başladı. Güzel bir şey olduğunda aklıma gelen, kötü bir günün sonunda sesini duymak istediğim kişi oldun. Fark etmeden “ben” diye başladığım cümlelerin sonunda <strong>“biz”</strong> demeye başladım.</p><div class="storyline"><article class="moment"><small>İLK KISIM</small><h3>Seni merak ettiğim zamanlar</h3><p>Bir mesajın neden yüzümde bu kadar büyük bir gülümseme bıraktığını anlamaya çalışıyordum. Cevabı sonradan çok net öğrendim.</p></article><article class="moment"><small>SONRA</small><h3>Yanında kendim olduğum anlar</h3><p>Rol yapmadan, cümleleri hesaplamadan, bazen saçmalayarak… Senin yanında olmak, eve dönmek gibi gelmeye başladı.</p></article><article class="moment"><small>BUGÜN</small><h3>Sana baktığım yer</h3><p>Hâlâ aynı heyecan var; ama artık yanında daha derin bir şey de var: seni gerçekten anlamak ve sana iyi gelmek isteği.</p></article></div></section>
-    <section class="chapter wrap reveal"><div class="split"><figure class="portrait"><img src="assets/ani-2.webp" alt="Ali ve Ezgi'nin yakın çekim fotoğrafı" loading="lazy"></figure><div><span class="num">03 — NİYETİM ÇOK NET</span><h2>Yüklerini elinden almak değil; beraber hafifletmek.</h2><p>Seni düzeltmek istemiyorum, çünkü sen bozuk değilsin. Seni kurtarmaya da gelmiyorum; sen zaten kendi ayakları üzerinde durabilen güçlü bir kadınsın.</p><p>Ben yalnızca yorulduğunda omuz, sustuğunda huzur, güldüğünde o kahkahayı biraz daha uzatan kişi olmak istiyorum. <strong>Hangisine ihtiyacın varsa, onu öğrenirim.</strong></p></div></div>
-      <div class="notes"><article class="note"><b>Zor gün garantisi</b><p>Dünya üstüne gelirse ikimiz dünyaya karşı konuşuruz. Gerekirse müşteri hizmetlerine bağlanırız.</p></article><article class="note"><b>Sessizlik seçeneği</b><p>Konuşmak istemezsen konuşmayız. Yanında sessizce durma paketim de ücretsiz.</p></article><article class="note"><b>Acil gülümsetme</b><p>Kötü espri stoğum yüksek. Kalite tartışılır ama teslimat çok hızlı.</p></article><article class="note"><b>Teknik rapor</b><p>Seni ne kadar sevdiğimi hesapladım. Sistem “değer çok büyük” deyip çöktü.</p></article></div>
+    <section class="opening scene" data-chapter="01">
+      <div class="opening-media"><img src="assets/ani-6.webp" alt="Ali ve Ezgi birlikte gülümsüyor"></div>
+      <div class="opening-copy reveal">
+        <span class="kicker">BİR AŞK MEKTUBU DEĞİL, BİZİM HİKÂYEMİZ</span>
+        <h2>Ben seni yalnız güzel günlerinde sevmedim.</h2>
+        <p>Güldüğünde zaten herkes yanında olabilir. Ben sustuğun günleri, yorulduğun anları ve güçlü görünmeye çalışırken içinde kopanları da sevdim.</p>
+      </div>
+      <a href="#first" class="scroll-cue">devam et <b>↓</b></a>
     </section>
-    <section class="photo-break"><div class="photo-quote reveal">“Yan yana olduğumuzda, hayat biraz daha hafif geliyor.”</div></section>
-    <section class="aside"><div class="aside-inner reveal"><span class="num">04 — UFAK BİR İSYAN</span><h2>Ben ayrı kalmayı hiç sevmedim.</h2><p>Hayat zaten yeterince kısa, günler zaten yeterince hızlı. Bir de biz birbirimizi severken araya suskunlukların, yanlış anlaşılmaların ve gereksiz mesafelerin girmesine içim razı değil.</p><p class="soft">Bazen kızsak da, bazen yorulsak da, çözümü birbirimizden uzaklaşmakta değil; birbirimize biraz daha yaklaşmakta bulalım istiyorum.</p><p>Çünkü özlemek romantik bir kelime olabilir ama ben seni özlemekten çok, yanında olmayı seviyorum. Bu benim dünyaya, zamana ve bizi ayrı bırakan her şeye küçük isyanım.</p></div></section>
-    <section class="chapter wrap reveal"><div class="promise"><span class="num">05 — BÜYÜK CÜMLELERDEN ÖNCE</span><h2>Küçük ama gerçek sözler.</h2><ul><li>Seni dinlerken cevap vermek için değil, gerçekten anlamak için dinleyeceğim.</li><li>Zorlandığın şeyleri küçümsemeyeceğim; senin hissettiğin şey benim için gerçektir.</li><li>Her şeyi tek başına taşımak zorunda olmadığını davranışlarımla göstereceğim.</li><li>Mutlu günlerinde alkışın, kötü günlerinde sığınağın olmaya çalışacağım.</li><li>Seni sevmenin yalnızca söylemek değil, emek vermek olduğunu unutmayacağım.</li></ul></div></section>
-    <section class="chapter wrap reveal"><span class="num">06 — BİZ</span><h2>Mükemmel olmak zorunda değiliz.</h2><p>Yanlış anlayabiliriz, kırılabiliriz, bazen birbirimizi sinir de edebiliriz. Ama her defasında birbirimize dönmenin, konuşmanın ve yeniden anlamanın bir yolunu bulabileceğimize inanıyorum.</p><p>Ben senden kusursuz olmanı beklemiyorum. Her gün neşeli olmanı, her şeyi hemen anlatmanı ya da yorulduğunda bile güçlü görünmeni de istemiyorum. Yanımda sadece kendin ol. Çünkü benim sevdiğim kişi, bütün halleriyle sensin.</p><p>Seninle yalnızca güzel günleri paylaşmak değil; hayat zorlaştığında da aynı tarafta kalmak istiyorum. Çünkü benim için sevgi, <strong>“her şey yolundayken buradayım” değil, “yol karışınca da elini bırakmıyorum”</strong> demek.</p></section>
-    <section class="confession reveal"><div class="confession-box"><span class="num">SON BİR İTİRAF</span><h2>Kalbimin saklayamadığı şey.</h2><p>Bazen sana ne kadar değer verdiğimi anlatacak kadar doğru kelime bulamıyorum. O yüzden bu kez kelimeleri bir sayfaya, anılarımızı fotoğraflara, hislerimi de bu şarkıya bıraktım.</p><button class="confess-btn" id="confess">Kalbimin devamını aç</button><div class="secret" id="secret"><div><p>Sen benim için yalnızca sevdiğim biri değilsin. Geleceği düşündüğümde yanında görmek istediğim, mutlu olduğunda mutluluğunu büyütmek; kırıldığında parçalarını tek başına toplamak zorunda bırakmamak istediğim kişisin.</p><p>Eğer gözlerin dolduysa bil ki amacım seni üzmek değil. Sana, bir insanın başka bir insanı böylesine içten sevebildiğini hatırlatmak. <strong>İyi ki kalbim seni seçmiş.</strong></p></div></div></div></section>
-    <figure class="final-photo reveal"><img src="assets/ani-4.webp" alt="Ali ve Ezgi'nin birlikte bir anısı" loading="lazy"></figure>
-    <footer class="final-text reveal"><h2>İyi ki varsın, Ezgi.</h2><p>Senden hiçbir şey istemek için yapmadım bu sayfayı. Sadece kalbimdeki yerini, yaşadıklarını gördüğümü ve yanında olmayı gerçekten istediğimi bil istedim.</p><div class="signature">Seni çok seven Ali</div><p class="legal">Kullanım koşulları: Bugün en az bir kez gülümsemen gerekir. İtirazlar doğrudan Ali'ye yapılabilir.</p></footer>
+
+    <section class="text-scene scene" id="first" data-chapter="02">
+      <div class="index reveal">02 / SENİ GÖRDÜĞÜM YER</div>
+      <div class="big-copy reveal">
+        <p>Sen bana sadece güzel birini göstermedin.</p>
+        <p><em>İçinde çok şey taşısa da hâlâ gülümseyebilen birini gösterdin.</em></p>
+      </div>
+      <div class="side-note reveal">Bazen anlatmadın. Bazen ben yeterince iyi anlayamadım. Ama bilmeni isterim: Görmediğimi sandığın hiçbir yükün benim için önemsiz değil.</div>
+    </section>
+
+    <section class="film scene" data-chapter="03" aria-label="Birlikte çekilmiş fotoğraflarımız">
+      <div class="film-track">
+        <figure class="frame tall reveal"><img src="assets/ani-2.webp" alt="Ali ve Ezgi'nin yakın çekim anısı"><figcaption>Yanında zamanın hızını unutuyorum.</figcaption></figure>
+        <figure class="frame reveal"><img src="assets/ani-1.webp" alt="Ali ve Ezgi birlikte"><figcaption>Bu fotoğrafta ışık kötü olabilir. Biz değiliz.</figcaption></figure>
+        <figure class="frame reveal"><img src="assets/ani-3.webp" alt="Ali Ezgi'ye bakıyor"><figcaption>Benim en sevdiğim manzara belli.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="letter scene" data-chapter="04">
+      <div class="letter-label reveal">SANA AÇIKÇA SÖYLEYEMEDİĞİM ŞEY</div>
+      <div class="letter-body reveal">
+        <p>Ezgi,</p>
+        <p>Hayatında yorulduğun, kimseye anlatmak istemediğin ya da anlatacak gücü bulamadığın şeyler olduğunu biliyorum. Hepsini çözebileceğimi iddia etmiyorum. Zaten senden bunu istemeni de beklemiyorum.</p>
+        <p>Ben yalnızca yanında durmak istiyorum. Bazen konuşarak, bazen susarak. Gerektiğinde yükünün bir ucundan tutarak. Sana “güçlü ol” demek yerine, yanımda güçlü olmak zorunda olmadığını hissettirerek.</p>
+        <p>Seni mutlu etmek benim için büyük sürprizler yapmak değil. Bazen gününün nasıl geçtiğini gerçekten dinlemek, bazen kahveni hatırlamak, bazen de hiç komik olmayan bir şakayla yüzünü güldürmeye çalışmak.</p>
+        <p class="hand">Çünkü seni sevmek, hayatını zorlaştırmak değil; biraz olsun kolaylaştırmak istemek demek.</p>
+      </div>
+    </section>
+
+    <section class="light scene" data-chapter="05">
+      <div class="light-photo reveal"><img src="assets/ani-5.webp" alt="Ali ve Ezgi gece birlikte"></div>
+      <div class="light-copy reveal"><span>BİR DE ŞU VAR</span><h2>Gülüşün iyi geliyor.</h2><p>O yüzden görev dağılımı şöyle: Sen gülümse, ben o gülümsemenin devam etmesi için elimden geleni yapayım. Çok profesyonel bir plan değil ama kalpten.</p></div>
+    </section>
+
+    <section class="video-scene scene" data-chapter="06">
+      <div class="video-heading reveal"><span>06 / BİR ANI, OLDUĞU GİBİ</span><h2>Bazı şeyler fotoğrafa sığmıyor.</h2><p>O yüzden bunu değiştirmedim, süslemedim. Biz nasılsak öyle bıraktım.</p></div>
+      <div class="phone-film reveal">
+        <video id="memoryVideo" playsinline preload="metadata" poster="assets/video-poster.jpg">
+          <source src="assets/animiz.mp4" type="video/mp4">
+        </video>
+        <button class="video-play" id="videoPlay" aria-label="Videoyu oynat"><i>▶</i><span>Anımızı oynat</span></button>
+      </div>
+      <p class="video-note reveal">Video başladığında şarkı biraz susacak. Çünkü bu kez ses bizim.</p>
+    </section>
+
+    <section class="rebellion scene" data-chapter="07">
+      <div class="rebellion-bg" aria-hidden="true"></div>
+      <div class="rebellion-copy reveal">
+        <span>UFAK BİR İSYAN</span>
+        <h2>Ben ayrı kalmayı sevmiyorum.</h2>
+        <p>İki insan birbirini seviyorsa, gururun sevgiden daha çok konuşmasına razı değilim. Suskunlukların günlerimizi çalmasına, yanlış anlaşılmaların aramıza yerleşmesine de.</p>
+        <p>Elbette kızarız. Yoruluruz. Bazen birbirimizi anlamakta zorlanırız. Ama ben uzaklaşmayı değil, birbirimize dönmenin yolunu bulmayı istiyorum.</p>
+        <strong>Özlemek güzel bir kelime olabilir. Ben yine de seni özlemekten çok yanında olmayı tercih ederim.</strong>
+      </div>
+    </section>
+
+    <section class="mosaic scene" data-chapter="08">
+      <div class="mosaic-title reveal"><span>BİZDEN KALAN DEĞİL</span><h2>Bizimle devam eden.</h2></div>
+      <figure class="m1 reveal"><img src="assets/ani-4.webp" alt="Ali ve Ezgi arabada"></figure>
+      <figure class="m2 reveal"><img src="assets/ani-6.webp" alt="Ali ve Ezgi kafede"></figure>
+      <figure class="m3 reveal"><img src="assets/ani-5.webp" alt="Ali ve Ezgi gece dışarıda"></figure>
+      <p class="mosaic-note reveal">Altı fotoğraf, bir video… Yine de seni anlatmaya yetmiyor.</p>
+    </section>
+
+    <section class="promises scene" data-chapter="09">
+      <div class="promise-intro reveal"><span>BÜYÜK SÖZLER DEĞİL</span><h2>Yapmak istediğim küçük şeyler.</h2></div>
+      <ol>
+        <li class="reveal"><b>01</b><p>Konuştuğunda cevap hazırlamak yerine seni gerçekten dinlemek.</p></li>
+        <li class="reveal"><b>02</b><p>Zorlandığın şeyleri küçümsememek; “geçer” deyip geçmemek.</p></li>
+        <li class="reveal"><b>03</b><p>Her şeyi tek başına taşımak zorunda olmadığını davranışlarımla göstermek.</p></li>
+        <li class="reveal"><b>04</b><p>İyi gününde sevincini büyütmek, kötü gününde yanında sessizce kalabilmek.</p></li>
+        <li class="reveal"><b>05</b><p>Seni sevmenin sadece bir cümle değil, her gün yeniden seçilen bir emek olduğunu unutmamak.</p></li>
+      </ol>
+    </section>
+
+    <section class="confession scene" data-chapter="10">
+      <div class="confession-photo"><img src="assets/ani-3.webp" alt="Ali ve Ezgi'nin birlikte fotoğrafı"></div>
+      <div class="confession-card reveal">
+        <span>SON BİR ŞEY</span>
+        <h2>Kalbimin devamını açar mısın?</h2>
+        <button id="confess">Dokun ve aç</button>
+        <div class="secret" id="secret"><div>
+          <p>Sen benim için yalnızca sevdiğim biri değilsin. Geleceği düşündüğümde yanımda görmek istediğim, mutluluğunu büyütmek ve kırıldığında yalnız olmadığını hissettirmek istediğim kişisin.</p>
+          <p>Bu sayfayı senden bir şey beklediğim için değil, sende ne gördüğümü unutma diye yaptım.</p>
+          <strong>Ben sende, sevdiğim kadını görüyorum. Bütün hikâye bu.</strong>
+        </div></div>
+      </div>
+    </section>
+
+    <footer class="ending scene" data-chapter="∞">
+      <span>ALİ'DEN • EZGİ'YE</span>
+      <h2>İyi ki varsın.</h2>
+      <p>Ve iyi ki kalbim seni tanımış.</p>
+      <small>Not: Ağladıysan sarılma hakkı kazandın. Süresiz ve sınırsız.</small>
+    </footer>
   </main>
   <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    const cover=document.getElementById('cover'),enter=document.getElementById('enter'),music=document.getElementById('music'),musicText=document.getElementById('musicText');let player,wantsMusic=false,playing=false;
-    window.onYouTubeIframeAPIReady=()=>{player=new YT.Player('yt',{height:'1',width:'1',videoId:'wB8x81sXd48',playerVars:{playsinline:1,controls:0,loop:1,playlist:'wB8x81sXd48'},events:{onReady:()=>{if(wantsMusic)startMusic()},onStateChange:e=>{playing=e.data===YT.PlayerState.PLAYING;updateMusic()}}})};
-    function startMusic(){if(player?.playVideo){player.playVideo();playing=true;updateMusic()}}
-    function updateMusic(){music.classList.toggle('paused',!playing);musicText.textContent=playing?'Kenan Doğulu • Yosun':'Yosun • duraklatıldı'}
-    enter.addEventListener('click',()=>{wantsMusic=true;cover.classList.add('hide');music.classList.add('show');startMusic();for(let i=0;i<25;i++)setTimeout(makeHeart,i*45)});
-    music.addEventListener('click',()=>{if(!player)return;playing?player.pauseVideo():player.playVideo()});
-    function makeHeart(){const h=document.createElement('span');h.className='heart';h.textContent=Math.random()>.45?'♥':'♡';h.style.left=(43+Math.random()*14)+'vw';h.style.top='75vh';h.style.fontSize=(13+Math.random()*20)+'px';h.style.setProperty('--x',(-150+Math.random()*300)+'px');document.body.appendChild(h);setTimeout(()=>h.remove(),1900)}
-    const confess=document.getElementById('confess'),secret=document.getElementById('secret');confess.addEventListener('click',()=>{secret.classList.add('open');confess.textContent='İyi ki sen ♡';confess.disabled=true;for(let i=0;i<34;i++)setTimeout(makeTear,i*85)});
-    function makeTear(){const t=document.createElement('i');t.className='tear';t.style.left=(6+Math.random()*88)+'vw';t.style.setProperty('--d',(2.4+Math.random()*2.2)+'s');t.style.opacity=.35+Math.random()*.6;document.body.appendChild(t);setTimeout(()=>t.remove(),4800)}
-    const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.14});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
