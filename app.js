@@ -24,21 +24,22 @@ document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
 document.querySelector('.light-copy')?.insertAdjacentHTML('beforeend','<div class="fun-note">Görev dağılımı: Sen gülümse, ben sebep bulurum. Kötü şaka departmanı da şimdilik bende.</div>');
 document.querySelector('.rebellion-copy')?.insertAdjacentHTML('beforeend','<div class="fun-note">Özlemek edebiyatta güzel. Gerçek hayatta gereksiz masraf.</div>');
 
-// Oyun 1: Ezgi'nin gülüşü için kaçan kalpleri yakala
-const lightScene=document.querySelector('.light'),lightCopy=document.querySelector('.light-copy'),lightNext=lightScene?.querySelector('.story-next');
-if(lightCopy&&lightNext){
-  lightCopy.insertAdjacentHTML('beforeend','<div class="mini-game" id="heartGame"><div class="game-title"><b>Kalbimi yakala</b><span>0 / 5</span></div><div class="heart-arena"><button class="game-heart" aria-label="Kalbi yakala">♥</button></div><p class="game-status">Biraz hızlı olabilir; seni görünce heyecanlanıyor.</p></div>');
-  lightNext.disabled=true;lightNext.querySelector('span').textContent='Önce kalbimi yakala';
-  const game=document.getElementById('heartGame'),heart=game.querySelector('.game-heart'),counter=game.querySelector('.game-title span'),status=game.querySelector('.game-status');let caught=0;
-  const moveHeart=()=>{heart.style.setProperty('--x',Math.floor(Math.random()*78)+3);heart.style.setProperty('--y',Math.floor(Math.random()*55)+7)};
-  moveHeart();heart.addEventListener('click',()=>{caught++;counter.textContent=caught+' / 5';burst(4);if(caught<5){status.textContent=caught===3?'Az kaldı… Kalbim zaten sende sayılır.':'Yakaladın! Bir tane daha ♡';moveHeart()}else{heart.remove();status.textContent='Tamam, itiraf: Zaten hep sendeydi. ♡';lightNext.disabled=false;lightNext.querySelector('span').textContent='Kalbi teslim aldım'}});
-}
-
-// Oyun 2: Birlikte taşımak için yükleri hafiflet
-const letterScene=document.querySelector('.letter'),letterBody=document.querySelector('.letter-body'),letterNext=letterScene?.querySelector('.story-next');
-if(letterBody&&letterNext){
-  letterBody.insertAdjacentHTML('beforeend','<div class="mini-game light-game" id="burdenGame"><div class="game-title"><b>Bugünün yüklerini hafiflet</b><span>dokun ve bırak</span></div><div class="burdens"><button class="burden">Yorgunluk</button><button class="burden">Kaygılar</button><button class="burden">Kırgınlıklar</button><button class="burden">“İyiyim” deme mecburiyeti</button></div><p class="relief">Bunların hepsini tek başına taşımak zorunda değilsin.</p></div>');
-  letterNext.disabled=true;letterNext.querySelector('span').textContent='Yükleri beraber hafifletelim';
-  const burdens=[...document.querySelectorAll('.burden')],relief=document.querySelector('.relief');let released=0;
-  burdens.forEach(item=>item.addEventListener('click',()=>{if(item.classList.contains('gone'))return;item.classList.add('gone');released++;if(released===burdens.length){relief.classList.add('show');letterNext.disabled=false;letterNext.querySelector('span').textContent='Birlikte devam edelim';burst(10)}}));
+// Her bölümün sonunda açılan kısa, farklı mini oyunlar
+const games=[
+ {q:'Kalbin yönünü bulalım',hint:'Sence Ali’nin kalbi hangi tarafa gidiyor?',choices:['← Uzağa','→ Ezgi’ye','↻ Kararsız'],ok:1,win:'Doğru. Navigasyon hiç şaşmadı ♡'},
+ {q:'Bir yükü birlikte bırakalım',hint:'Bugün hangisini burada bırakıyoruz?',choices:['Kaygıları','Ezgi’yi','Sarılmayı'],ok:0,win:'Tamamdır. Onu artık beraber taşıyoruz.'},
+ {q:'Fotoğraf testi',hint:'Bu karede en güzel şey ne?',choices:['Işık','Arka plan','Biz'],ok:2,win:'Cevap fazla kolaydı, kabul ediyorum.'},
+ {q:'Sessizlik çevirmeni',hint:'“İyiyim” bazen ne demektir?',choices:['Kahve getir','Yanımda kal','Hiçbir şey'],ok:1,win:'Ben de tam bunu söylemek istemiştim.'},
+ {q:'Gülüş görevi',hint:'Ezgi gülerse Ali ne yapar?',choices:['Bir daha güldürür','Kaçar','Fatura keser'],ok:0,win:'Kötü şakalar ücretsiz, sarılmalar sınırsız.'},
+ {q:'Anı kilidi',hint:'Videomuzun şifresi hangisi?',choices:['1234','Biz','Wi‑Fi çekmiyor'],ok:1,win:'Anılarımız başarıyla açıldı ♡'},
+ {q:'Ufak isyan sınavı',hint:'Özlemek mi, yanında olmak mı?',choices:['Özlemek','Yanında olmak','Gurur yapmak'],ok:1,win:'Edebiyat kaybetti, biz kazandık.'},
+ {q:'Kareleri tamamla',hint:'Altı fotoğraf + bir video = ?',choices:['7 dosya','Bir sürü anı','Depolama sorunu'],ok:1,win:'Doğru. Daha çoğunu biriktireceğiz.'},
+ {q:'Söz seçimi',hint:'Zor bir günde en iyi cümle?',choices:['Geçer','Abartma','Ben buradayım'],ok:2,win:'Bazen en güzel yardım iki kelime.'},
+ {q:'Son kalp kontrolü',hint:'Ali’nin kalbi şu an kimde?',choices:['Kendisinde','Ezgi’de','Kayıp eşya bürosunda'],ok:1,win:'Teslim tutanağına gerek yok. Hep sende.'}
+];
+const cleared=new WeakSet();let gameOpen=false;
+document.addEventListener('click',e=>{const btn=e.target.closest('.story-next');if(!btn||btn.disabled)return;const scene=btn.closest('.scene');if(!scene||cleared.has(scene)||gameOpen)return;e.preventDefault();e.stopImmediatePropagation();openGame(scene,btn)},true);
+function openGame(scene,trigger){
+ gameOpen=true;const data=games[Math.min(current,games.length-1)],overlay=document.createElement('div');overlay.className='game-overlay';overlay.innerHTML='<div class="game-sheet" role="dialog" aria-modal="true"><span class="game-kicker">MİNİ GÖREV · '+String(current+1).padStart(2,'0')+'</span><h3>'+data.q+'</h3><p>'+data.hint+'</p><div class="game-choices">'+data.choices.map((x,i)=>'<button data-choice="'+i+'">'+x+'</button>').join('')+'</div><small>Doğru cevabı bulunca hikâye devam edecek.</small></div>';document.body.appendChild(overlay);requestAnimationFrame(()=>overlay.classList.add('show'));
+ overlay.querySelectorAll('[data-choice]').forEach(choice=>choice.addEventListener('click',()=>{if(Number(choice.dataset.choice)!==data.ok){choice.classList.remove('wrong');void choice.offsetWidth;choice.classList.add('wrong');overlay.querySelector('small').textContent='Olmadı 😄 Bir daha düşün.';return}choice.classList.add('right');overlay.querySelector('small').textContent=data.win;burst(12);setTimeout(()=>{cleared.add(scene);overlay.classList.remove('show');setTimeout(()=>{overlay.remove();gameOpen=false;trigger.click()},280)},850)}));
 }
