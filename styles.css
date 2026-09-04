@@ -2,3 +2,45 @@
 @media(max-width:760px){.progress{left:10px;height:105px}.opening-copy{width:calc(100% - 44px);margin-bottom:13vh}.opening h2{font-size:clamp(3rem,14vw,5.2rem)}.opening-media img{object-position:58% center}.scroll-cue{right:22px;bottom:22px}.text-scene{min-height:auto;padding:105px 24px;display:block}.big-copy{font-size:clamp(2.5rem,11vw,4rem);margin-top:50px}.side-note{margin:50px 0 0 12vw}.film{padding:80px 0}.film-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100%;padding:0 24px 20px;gap:14px}.frame,.frame.tall{flex:0 0 82vw;scroll-snap-align:center}.frame img,.frame.tall img{height:62svh;min-height:420px}.letter{padding:100px 24px;display:block}.letter-body{margin-top:55px;font-size:1.35rem}.light{min-height:auto;display:block}.light-photo{min-height:68svh;height:68svh}.light-photo img{object-position:57% center}.light-copy{padding:70px 24px 95px}.video-scene{padding:100px 24px 120px;display:block}.video-heading{margin-bottom:55px}.phone-film{width:min(84vw,390px);margin:auto}.video-note{position:static;text-align:center;margin-top:24px}.rebellion{min-height:120svh}.rebellion-copy h2{font-size:clamp(3.4rem,16vw,6rem)}.mosaic{min-height:auto;padding:100px 14px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 48svh 42svh 45svh auto}.mosaic-title{grid-column:1/3;padding:0 10px}.m1{grid-column:1/3}.m2{grid-column:1;grid-row:3}.m3{grid-column:2;grid-row:3/5}.mosaic-note{grid-column:1/3;text-align:left;padding:20px 10px}.promise-intro{display:block}.promise-intro h2{margin-top:25px}.promises{padding:110px 24px}.promises li{grid-template-columns:54px 1fr}.confession{display:block;min-height:auto}.confession-photo{min-height:70svh;height:70svh}.confession-photo img{object-position:58% center}.confession-card{padding:80px 24px 110px}.ending h2{font-size:clamp(5rem,25vw,8rem)}.gate-shade{background:linear-gradient(0deg,#070606ed 0,#0706067d 65%,#07060636)}.gate-copy{align-self:end;padding-bottom:10vh}.gate h1{font-size:clamp(3.6rem,17vw,5.5rem)}.music span:last-child{display:none}}
 @media(max-width:480px){body{overflow-wrap:anywhere}.progress{left:0;top:0;right:0;width:100%;height:3px;transform:none;border:0;background:#ffffff12}.progress i{height:3px!important;width:0}.progress span{display:none}.gate-copy{width:calc(100% - 32px);padding-bottom:max(7vh,env(safe-area-inset-bottom))}.gate h1{font-size:clamp(3.25rem,16vw,4.7rem);line-height:.9;margin:18px 0}.gate p{font-size:.98rem;line-height:1.55}.gate button{width:100%;min-height:54px;margin-top:16px}.music{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:46px;height:46px;padding:0;justify-content:center;border-radius:50%}.opening-copy{width:calc(100% - 32px);margin-bottom:14vh}.opening h2{font-size:clamp(2.9rem,14.5vw,4.3rem);line-height:.94}.opening p{font-size:1rem;line-height:1.62}.scroll-cue{display:none}.big-copy{font-size:clamp(2.35rem,11vw,3.45rem)}.side-note{margin-left:7vw}.frame,.frame.tall{flex-basis:88vw}.frame img,.frame.tall img{height:58svh;min-height:390px}.film-track{scrollbar-width:none}.film-track::-webkit-scrollbar{display:none}.letter-body{font-size:1.22rem;line-height:1.58}.letter-body p:first-child{font-size:1.7em}.light-photo{height:60svh;min-height:60svh}.light-copy h2,.video-heading h2,.promise-intro h2,.confession-card h2{font-size:clamp(2.9rem,14vw,4.2rem)}.video-scene{padding-left:16px;padding-right:16px}.video-heading{padding:0 8px}.phone-film{width:min(88vw,360px);padding:6px}.video-play{min-height:54px}.video-play i{width:62px;height:62px}.rebellion-copy{width:calc(100% - 32px)}.rebellion-copy p{font-size:1rem;line-height:1.68}.rebellion-copy strong{margin-top:34px;font-size:1.5rem}.mosaic{grid-template-rows:auto 42svh 36svh 38svh auto}.promises{padding-left:18px;padding-right:18px}.promises li{grid-template-columns:42px 1fr;padding:24px 0}.promises li p{font-size:1.3rem}.confession-photo{height:62svh;min-height:62svh}.confession-card button{width:100%;min-height:52px}.ending{min-height:90svh;padding-bottom:max(60px,env(safe-area-inset-bottom))}.ending small{line-height:1.6}.reveal{transform:translateY(28px)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Bölüm bölüm ilerleyen yeni hikâye düzeni */
+body{font-family:Calibri,"Segoe UI",Arial,sans-serif;overflow:hidden}
+h1,h2,.big-copy,.letter-body,.frame figcaption,.rebellion-copy strong,.mosaic-note,.promises li p,.secret strong,.ending p{font-family:"Times New Roman",Times,serif!important}
+main{height:100svh;position:relative}
+.scene{position:absolute!important;inset:0!important;width:100%;height:100svh!important;min-height:0!important;overflow-y:auto;overscroll-behavior:contain;visibility:hidden;opacity:0;transform:scale(1.025);transition:opacity .65s ease,transform .8s ease,visibility .65s}
+.scene.story-active{visibility:visible;opacity:1;transform:none;z-index:5}
+.scene.story-past{transform:scale(.975)}
+.story-next{position:sticky;z-index:25;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);margin:34px auto 20px;border:1px solid #ffffff52;background:#f4efe7;color:#171113;min-width:220px;min-height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:30px;font:600 14px Calibri,sans-serif;cursor:pointer;box-shadow:0 14px 45px #0007}
+.story-next:disabled{opacity:.4;cursor:not-allowed}
+.story-next:hover{transform:translateX(-50%) translateY(-2px)}
+.paper-next{background:#171113;color:#fff;border-color:#171113}
+.chapter-dots{position:fixed;z-index:45;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:4px;width:min(520px,58vw)}
+.chapter-dots i{height:2px;flex:1;background:#ffffff30}
+.chapter-dots i.done,.chapter-dots i.current{background:#fff}
+.chapter-label{position:fixed;z-index:44;top:28px;left:50%;transform:translateX(-50%);font:600 10px Calibri,sans-serif;letter-spacing:.17em;color:#ffffffa8;white-space:nowrap}
+.gate{transition:opacity .8s,visibility .8s}
+.film-track{height:auto}
+.frame{display:none}
+.frame.memory-active{display:block;animation:memoryIn .65s both}
+.film-track{display:block;width:min(850px,calc(100% - 50px))}
+.frame img,.frame.tall img{height:68vh}
+.film .story-next{display:flex}
+.video-scene{padding-bottom:30px}
+.video-scene .story-next{grid-column:1/3}
+.confession .story-next{display:none}
+.confession.letter-open>.story-next{display:flex}
+.ending .story-next{display:none}
+.fun-note{max-width:620px;margin:25px auto 0;padding:14px 18px;border:1px dashed currentColor;font-size:.9rem;line-height:1.5;text-align:center;opacity:.8}
+@keyframes memoryIn{from{opacity:0;transform:translateX(28px) rotate(1deg)}}
+@media(max-width:760px){
+ .chapter-dots{top:10px;width:calc(100% - 88px);left:12px;transform:none}.chapter-label{top:19px;font-size:8px}.music{z-index:48}
+ .scene{padding-top:35px!important;padding-bottom:max(18px,env(safe-area-inset-bottom))!important}
+ .opening{display:flex!important;padding:0!important}.opening-copy{margin-bottom:17vh}
+ .text-scene{padding:82px 22px 20px!important}.film{padding:65px 0 15px!important}.film-track{width:100%;padding:0 18px;overflow:visible}
+ .frame,.frame.tall{width:100%;}.frame img,.frame.tall img{height:61svh;min-height:350px}
+ .letter{padding:75px 22px 15px!important}.light{padding:35px 0 0!important}.light-copy{padding-bottom:25px}
+ .video-scene{padding:70px 16px 15px!important}.video-scene .story-next{grid-column:auto}
+ .rebellion{padding:50px 0 0!important}.mosaic{padding:70px 12px 15px!important}
+ .promises{padding:75px 20px 15px!important}.confession{padding:35px 0 0!important}.ending{padding:70px 20px 25px!important}
+ .story-next{width:calc(100% - 32px);min-height:52px;margin-top:24px}.fun-note{margin:18px 16px 0}
+}
